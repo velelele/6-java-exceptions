@@ -1,5 +1,7 @@
 package com.example.task07;
 
+import jdk.nashorn.internal.runtime.ECMAException;
+
 public class Task07Main {
 
     public static final String CHECKED = "checked";
@@ -12,13 +14,14 @@ public class Task07Main {
     public Processor processor;
 
     public String getExceptionType() {
-        //todo напишите здесь свою корректную реализацию этого метода, вместо существующей
         try {
-            processor.process(); //todo вы можете заменить реализацию этого метода для ручного дебага
-        } catch (Exception e) {
-
+            processor.process();
+        } catch (IllegalArgumentException e) {
+            return UNCHECKED;
+        } catch (Exception e){
+            return CHECKED;
         }
-        return null;
+        return NONE;
     }
 
 }
